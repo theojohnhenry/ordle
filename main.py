@@ -102,7 +102,7 @@ def main():
             game == "lost"
 
     if game == "won":
-        print("you won!")
+        print("you won!, thanks for playing")
     if game == "lost":
-        print("you lost!")
+        print("you lost!, thanks for playing")
 main()
