@@ -23,10 +23,10 @@ import os
 CGREEN = '\033[42m'
 CYELLOW = '\033[43m'
 CGREY = '\033[100m'
-
 CEND = '\033[0m'
 
 # ---    SETTINGS ---
+
 TRIES = 6
 WORDLENGTH = 5
 with open("json/sample.json", "r") as f:
@@ -49,9 +49,9 @@ def getValidGuess():
         if len(guess) != WORDLENGTH:
             print(f"Gissningen måste vara {WORDLENGTH} bokstäver.")
             continue
-       # if guess not in DATA:
-        #    print(f"Gissningen är inte ett riktigt ord.")
-         #   continue
+        if guess not in DATA:
+            print(f"Gissningen är inte ett riktigt ord.")
+            continue
         else:
             break
     return guess
