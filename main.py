@@ -7,8 +7,8 @@
 # count guesses [x]
 #
 #
-# optional - 
-# make a gui 
+# optional -
+# make a gui
 # leaderboard
 # make it a website
 # system som gör så att det inte blir samma ord flera gånger på en månad
@@ -35,10 +35,12 @@ AVAILABLE = "abcdefghijklmnopqrstuvwxyzåäö"
 
 # --- Functions ---
 
+
 def getWotd():
-        randint = random.randint(0, len(DATA)-1)
-        wotd = DATA[randint]
-        return wotd
+    randint = random.randint(0, len(DATA)-1)
+    wotd = DATA[randint]
+    return wotd
+
 
 def getValidGuess():
     while True:
@@ -56,6 +58,7 @@ def getValidGuess():
             break
     return guess
 
+
 def verifyWord(guess, wotd):
     colors = ["NaN", "NaN", "NaN", "NaN", "NaN"]
     global AVAILABLE
@@ -68,15 +71,19 @@ def verifyWord(guess, wotd):
             continue
         if c not in wotd:
             colors[i] = CGREY
-            AVAILABLE = AVAILABLE.replace(c,' ')
-    
+            AVAILABLE = AVAILABLE.replace(c, ' ')
+
     if all(status == CGREEN for status in colors):
         return "won", (f"{colors[0]}{guess[0]}{CEND}{colors[1]}{guess[1]}{CEND}{colors[2]}{guess[2]}{CEND}{colors[3]}{guess[3]}{CEND}{colors[4]}{guess[4]}{CEND}")
     else:
         return "ongoing", (f"{colors[0]}{guess[0]}{CEND}{colors[1]}{guess[1]}{CEND}{colors[2]}{guess[2]}{CEND}{colors[3]}{guess[3]}{CEND}{colors[4]}{guess[4]}{CEND}")
 
 
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 #  --- Main ---
+
 
 def main():
     wotd = getWotd()
@@ -90,7 +97,7 @@ def main():
     while game == "ongoing":
         if tries > 0:
             guess = getValidGuess()
-            os.system('clear')
+            cls()
             game, row = verifyWord(guess, wotd)
             rowList.append(row)
             for row in rowList:
@@ -102,7 +109,9 @@ def main():
             game == "lost"
 
     if game == "won":
-        print("you won!, thanks for playing")
+        print("you won!, ur the goat")
     if game == "lost":
-        print("you lost!, thanks for playing")
+        print("you lost! noob")
+
+
 main()
