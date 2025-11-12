@@ -18,6 +18,7 @@
 import json
 import random
 import os
+import sys
 
 # --- COLORS ---
 CGREEN = '\033[42m'
@@ -86,11 +87,14 @@ def cls():
 
 
 def main():
+    DEBUG = "--debug" in sys.argv
     wotd = getWotd()
     tries = TRIES
     rowList = []
     global AVAILABLE
-    print(f"word of the day is \"{wotd}\"")
+
+    if DEBUG:
+        print(f"word of the day is \"{wotd}\"")
 
     game = "ongoing"
 
